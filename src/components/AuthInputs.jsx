@@ -28,21 +28,12 @@ const Actions = styled.div`
 `;
 
 export default function AuthInputs() {
-  const [enteredEmail, setEnteredEmail] = useState('');
+  const [enteredEmail, setEnteredEmail]       = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted]           = useState(false);
 
-  function handleInputChange(identifier, value) {
-    if (identifier === 'email') {
-      setEnteredEmail(value);
-    } else {
-      setEnteredPassword(value);
-    }
-  }
-
-  function handleLogin() {
-    setSubmitted(true);
-  }
+  const handleInputChange = (identifier, value) => (identifier === 'email') ? setEnteredEmail(value) : setEnteredPassword(value);
+  const handleLogin = () => setSubmitted(true);
 
   const emailNotValid = submitted && !enteredEmail.includes('@');
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
